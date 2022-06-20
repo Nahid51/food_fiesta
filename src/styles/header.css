@@ -145,4 +145,8 @@
     .logo h5 {
         margin-top: 0;
     }
+
+    .cart_badge {
+        top: 10px;
+    }
 }
