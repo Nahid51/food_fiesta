@@ -5,7 +5,7 @@
 
 .footer_logo img {
     width: calc(100% - 80%) !important;
-    margin-bottom: 7px;
+    margin-bottom: 10px;
 }
 
 .footer_logo h5 {
@@ -87,6 +87,11 @@
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1200px) {
+
+    .footer_logo img {
+        margin-bottom: 15px;
+    }
+
     .newsletter span {
         padding: 5px;
     }

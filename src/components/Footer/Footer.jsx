@@ -63,13 +63,13 @@ const Footer = () => {
                     <Col lg='6' md='6'>
                         <div className="social_links d-flex align-items-center justify-content-end gap-4">
                             <p className='m-0'>Follow: </p>
-                            <span><Link to="https://www.facebook.com"><i class="ri-facebook-line"></i></Link></span>
+                            <span><Link to="https://www.facebook.com"><i className="ri-facebook-line"></i></Link></span>
 
-                            <span><Link to="https://github.com/Nahid51"><i class="ri-github-line"></i></Link></span>
+                            <span><Link to="https://github.com/Nahid51"><i className="ri-github-line"></i></Link></span>
 
-                            <span><Link to="https://www.youtube.com"><i class="ri-youtube-line"></i></Link></span>
+                            <span><Link to="https://www.youtube.com"><i className="ri-youtube-line"></i></Link></span>
 
-                            <span><Link to="https://www.linkedin.com/in/md-nahid-hasan-12a720199/"><i class="ri-linkedin-line"></i></Link></span>
+                            <span><Link to="https://www.linkedin.com/in/md-nahid-hasan-12a720199/"><i className="ri-linkedin-line"></i></Link></span>
                         </div>
                     </Col>
                 </Row>
