@@ -1,69 +1,15 @@
-.hero_content {
-    padding-top: 70px;
-}
-
-.hero_title {
-    font-size: 2.5rem;
-    line-height: 55px;
-}
-
-.hero_title span {
+.feature_subtitle {
     color: #df2020;
 }
 
-.hero_content p {
-    font-size: 1rem;
-    line-height: 30px;
+.feature_title span {
+    color: #df2020;
+}
+
+.feature_text {
     color: #777;
 }
 
-.hero_btns button {
-    border: none;
-    outline: none;
-    padding: 7px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 600;
-}
-
-.order_btn {
-    background: #df2020;
-    color: #fff;
-    transition: 0.3s;
-}
-
-.order_btn:hover {
-    background: #212245;
-}
-
-.all_foods-btn {
-    background: transparent;
-    border: 1px solid #df2020 !important;
-}
-
-.all_foods-btn:hover {
-    background: transparent;
-    border: 1px solid #212245 !important;
-}
-
-.all_foods-btn a {
-    color: #df2020;
-}
-
-.all_foods-btn a:hover {
-    color: #212245;
-}
-
-.hero_service p {
-    color: #212245;
-    font-weight: 600;
-    font-size: 0.9rem;
-}
-
-.shipping_icon i {
-    padding: 5px;
-    background: #df2020;
-    color: #fff;
-    border-radius: 50%;
-    font-weight: 500;
+.feature_item p {
+    color: #777;
 }
