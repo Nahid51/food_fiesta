@@ -41,7 +41,29 @@
     border: 1px solid #df2020 !important;
 }
 
+.all_foods-btn:hover {
+    background: transparent;
+    border: 1px solid #212245 !important;
+}
 
 .all_foods-btn a {
     color: #df2020;
+}
+
+.all_foods-btn a:hover {
+    color: #212245;
+}
+
+.hero_service p {
+    color: #212245;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.shipping_icon i {
+    padding: 5px;
+    background: #df2020;
+    color: #fff;
+    border-radius: 50%;
+    font-weight: 500;
 }
