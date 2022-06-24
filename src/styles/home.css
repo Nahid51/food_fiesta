@@ -63,3 +63,16 @@
 .choose_us-desc {
     color: #777;
 }
+
+.testimonial_subtitle {
+    color: #df2020;
+}
+
+.testimonial_title span {
+    color: #df2020;
+}
+
+.testimonial_desc {
+    color: #777;
+    line-height: 30px;
+}
