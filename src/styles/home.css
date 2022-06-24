@@ -76,3 +76,119 @@
     color: #777;
     line-height: 30px;
 }
+
+@media only screen and (max-width: 768px) {
+
+    .hero_content h5 {
+        font-size: 1rem;
+    }
+
+    .hero_content p {
+        font-size: 0.8rem;
+        line-height: 25px;
+    }
+
+    .hero_title {
+        font-size: 1.5rem;
+        line-height: 40px;
+    }
+
+    .hero_btns button {
+        padding: 5px 15px;
+        font-size: 0.7rem;
+    }
+
+    .hero_service p {
+        font-size: 0.7rem;
+    }
+
+    .feature_item h5 {
+        font-size: 0.9rem;
+    }
+
+    .feature_item p {
+        font-size: 0.8rem;
+        margin-bottom: 0;
+    }
+
+    .feature_subtitle {
+        font-size: 1rem;
+    }
+
+    .feature_text {
+        font-size: 0.8rem;
+        margin-bottom: 0;
+    }
+
+    .food_category {
+        padding: 15px;
+    }
+
+    .food_category button {
+        padding: 5px 15px;
+        font-size: 0.7rem;
+    }
+
+    .tasty_treat-desc {
+        font-size: 0.8rem;
+        margin-bottom: 0;
+    }
+
+    .choose_us-title {
+        font-size: 0.8rem;
+    }
+
+    .choose_us-desc {
+        font-size: 0.7rem;
+    }
+
+    .testimonial_subtitle {
+        font-size: 1rem;
+    }
+
+    .testimonial_desc {
+        font-size: 0.8rem;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .hero_content {
+        text-align: center;
+    }
+
+    .hero_content h5 {
+        font-size: 1rem;
+    }
+
+    .hero_content p {
+        font-size: 0.8rem;
+        line-height: 25px;
+    }
+
+    .hero_title {
+        font-size: 1.5rem;
+        line-height: 40px;
+    }
+
+    .hero_btns {
+        justify-content: center;
+    }
+
+    .hero_btns button {
+        padding: 5px 15px;
+        font-size: 0.7rem;
+    }
+
+    .hero_service {
+        justify-content: center;
+    }
+
+    .food_category button {
+        padding: 5px 10px;
+        font-size: 0.7rem;
+    }
+
+    .why_choose-us {
+        padding-top: 0;
+    }
+}

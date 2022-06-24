@@ -108,13 +108,13 @@ const Home = () => {
                             <h5 className="feature_subtitle mb-4">What we serve</h5>
                             <h2 className="feature_title">Just sit back at home</h2>
                             <h2 className="feature_title">We will <span>take care</span></h2>
-                            <p className='mb-1 mt-4 feature_text'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. At provident cupiditate porro quas neque.</p>
-                            <p className='feature_text'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, commodi nulla fuga iure ipsa sit.</p>
+                            <p className='mb-1 mt-4 feature_text'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, mollitia?</p>
+                            <p className='feature_text'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus, delectus.</p>
                         </Col>
 
                         {
                             featureData.map((item, index) => (
-                                <Col lg="4" md="4" key={index} className="mt-5">
+                                <Col lg="4" md="6" sm="6" key={index} className="mt-5">
                                     <div className="feature_item text-center px-5 py-3">
                                         <img src={item.imgUrl} alt="feature-img" className="w-25 mb-3" />
                                         <h5 className='fw-bold mb-3'>{item.title}</h5>
@@ -159,7 +159,7 @@ const Home = () => {
 
                         {
                             allProducts.map(item => (
-                                <Col col="3" md="4" key={item.id} className="mt-5">
+                                <Col col="3" md="4" sm="6" xs="6" key={item.id} className="mt-5">
                                     <ProductCard item={item} />
                                 </Col>
                             ))
@@ -168,7 +168,7 @@ const Home = () => {
                 </Container>
             </section>
 
-            <section>
+            <section className='why_choose-us'>
                 <Container>
                     <Row>
                         <Col lg="6" md="6">
@@ -182,7 +182,7 @@ const Home = () => {
                                 </h2>
                                 <p className='tasty_treat-desc'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta et aliquid rem officiis inventore aspernatur laboriosam assumenda, architecto recusandae numquam est delectus minus ex non ducimus soluta esse placeat necessitatibus?</p>
 
-                                <ListGroup className='mt-5'>
+                                <ListGroup className='mt-4'>
                                     <ListGroupItem className='border-0 ps-0'>
                                         <p className='choos_us-title d-flex align-items-center gap-2'>
                                             <i className="ri-checkbox-circle-line"></i>

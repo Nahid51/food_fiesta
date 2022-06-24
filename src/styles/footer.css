@@ -45,7 +45,7 @@
     border: 1px solid #212245;
     border-radius: 5px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     cursor: pointer;
 }
@@ -86,13 +86,57 @@
     color: #212245;
 }
 
+@media only screen and (max-width: 992px) {
+    .footer_title {
+        font-size: 0.8rem;
+    }
+
+    .delivery_time-item span {
+        font-size: 0.8rem;
+    }
+
+    .delivery_time-item p {
+        font-size: 0.7rem;
+        margin-bottom: 0;
+    }
+
+}
+
+@media only screen and (max-width: 576px) {
+    .copywrite_text {
+        text-align: center;
+    }
+
+    .social_links {
+        justify-content: center !important;
+    }
+
+    .social_links p {
+        font-size: 0.8rem;
+    }
+
+    .social_links span {
+        padding: 4px;
+    }
+
+    .social_links span a {
+        font-size: 0.7rem;
+    }
+}
+
 @media only screen and (min-width: 768px) and (max-width: 1200px) {
 
     .footer_logo img {
         margin-bottom: 15px;
     }
 
+    .newsletter input {
+        padding: 7px;
+        font-size: 0.8rem;
+    }
+
     .newsletter span {
-        padding: 5px;
+        padding: 5px 10px;
+        font-size: 0.8rem;
     }
 }
