@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import logo from '../../assets/images/res-logo.png';
 import { NavLink, Link } from 'react-router-dom';
@@ -24,10 +24,25 @@ const nav_links = [
 ]
 
 const Header = () => {
-    const menuRef = useRef(null)
-    const toggleMenu = () => menuRef.current.classList.toggle('show_menu')
+    const menuRef = useRef(null);
+    const headerRef = useRef(null);
+
+    const toggleMenu = () => menuRef.current.classList.toggle('show_menu');
+
+    useEffect(() => {
+        window.addEventListener('scroll', () => {
+            if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+                headerRef.current.classList.add('header_shrink')
+            }
+            else {
+                headerRef.current.classList.remove('header_shrink')
+            }
+        })
+        // return () => window.removeEventListener('scroll')
+    }, []);
+
     return (
-        <header className='header'>
+        <header className='header' ref={headerRef}>
             <Container>
                 <div className="nav_wrapper d-flex justify-content-between align-items-center">
                     <div className="logo">

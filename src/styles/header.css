@@ -1,23 +1,25 @@
 .header {
     width: 100%;
-    height: 80px;
-    line-height: 80px;
+    height: 100px;
+    line-height: 100px;
 }
 
 .logo {
     text-align: center;
+    margin-top: -10px;
 }
 
 .logo img {
     width: calc(100% - 60%);
     object-fit: contain;
+    margin-top: -40px;
 }
 
 .logo h5 {
     font-weight: 600;
     font-size: 1rem;
     color: #212245;
-    margin: -10px 0 0 0;
+    margin: -40px 0 0 0;
 }
 
 .menu a {
@@ -41,7 +43,7 @@
 
 .cart_badge {
     position: absolute;
-    top: 20px;
+    top: 30px;
     right: -10px;
     background: #df2020;
     color: #fff;
@@ -77,10 +79,15 @@
     position: sticky;
     top: 0;
     left: 0;
+    background: #fff;
+    z-index: 9999;
     box-shadow: 5px 5px 15px -5px #fde4e4;
 }
 
 @media only screen and (max-width: 992px) {
+    /* .logo {
+        margin-top: -20px;
+    } */
 
     .logo img {
         width: calc(100% - 70%);
@@ -88,7 +95,6 @@
 
     .logo h5 {
         font-size: 0.8rem;
-        margin-top: -15px;
     }
 
     .navigation {
@@ -138,15 +144,23 @@
 @media only screen and (max-width: 768px) {
     .header {
         width: 100%;
-        height: 50px;
-        line-height: 50px;
+        height: 80px;
+        line-height: 80px;
+    }
+
+    .logo {
+        margin-top: 10px;
+    }
+
+    .logo img {
+        margin-top: -70px;
     }
 
     .logo h5 {
-        margin-top: 0;
+        margin-top: -50px;
     }
 
     .cart_badge {
-        top: 10px;
+        top: 20px;
     }
 }
