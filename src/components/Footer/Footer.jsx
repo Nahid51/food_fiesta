@@ -10,7 +10,7 @@ const Footer = () => {
             <Container>
                 <Row>
                     <Col lg='3' md='4' sm='6'>
-                        <div className="logo footer_logo text-start">
+                        <div className="logo footer_logo text-start mt-3">
                             <img src={logo} alt="Logo" />
                             <h5>Food Fiesta</h5>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, harum voluptatem?</p>

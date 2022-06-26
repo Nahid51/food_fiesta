@@ -5,13 +5,13 @@
 
 .footer_logo img {
     width: calc(100% - 80%) !important;
-    margin-bottom: 10px;
 }
 
 .footer_logo h5 {
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.1rem;
     margin-bottom: 15px !important;
+    margin-top: 10px !important;
 }
 
 .footer_logo p {
@@ -32,6 +32,7 @@
 
 .delivery_time-item p {
     color: #212245;
+    margin-bottom: 0;
 }
 
 .footer_title {
@@ -86,29 +87,10 @@
     color: #212245;
 }
 
-@media only screen and (max-width: 992px) {
-    .footer_title {
-        font-size: 0.8rem;
-    }
-
-    .delivery_time-item span {
-        font-size: 0.8rem;
-    }
-
-    .delivery_time-item p {
-        font-size: 0.7rem;
-        margin-bottom: 0;
-    }
-
-}
 
 @media only screen and (max-width: 576px) {
-    .copywrite_text {
-        text-align: center;
-    }
-
-    .social_links {
-        justify-content: center !important;
+    .footer_logo img {
+        width: calc(100% - 90%) !important;
     }
 
     .social_links p {
@@ -124,11 +106,44 @@
     }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1200px) {
-
-    .footer_logo img {
-        margin-bottom: 15px;
+@media only screen and (max-width: 768px) {
+    .footer_logo h5 {
+        margin-top: 0 !important;
     }
+
+    .copywrite_text {
+        text-align: center;
+    }
+
+    .social_links {
+        justify-content: center !important;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .footer_title {
+        font-size: 0.8rem;
+    }
+
+    .delivery_time-item span {
+        font-size: 0.8rem;
+    }
+
+    .delivery_time-item p {
+        font-size: 0.7rem;
+    }
+
+    .social_links p {
+        font-size: 0.8rem;
+    }
+
+    .social_links span a {
+        font-size: 0.7rem;
+    }
+
+}
+
+@media only screen and (max-width: 1200px) {
 
     .newsletter input {
         padding: 7px;
