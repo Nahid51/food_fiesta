@@ -5,19 +5,27 @@ import CommonSection from '../components/UI/commonSection/CommonSection';
 import products from '../assets/fake-data/products';
 import ProductCard from '../components/UI/product.card/ProductCard';
 import '../styles/allFoods.css';
+import '../styles/pagination.css';
 import ReactPaginate from 'react-paginate';
 
 const AllFoods = () => {
-    const [searchTerm, setSearchTerm] = useState('');
-    // const [productData, setProductData] = useState(products);
+    const [searchTerm, setSearchTerm] = useState("");
     const [pageNumber, setPageNumber] = useState(0);
+    const searchedProduct = products.filter((item) => {
+        if (searchTerm.value === "") {
+            return item;
+        }
+        if (item.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+            return item;
+        } else {
+            return console.log("not found");
+        }
+    });
     const productPerPage = 8;
-    const visitedPege = pageNumber * productPerPage;
-    const displayPage = products.slice(visitedPege, visitedPege + productPerPage);
-    const pageCount = Math.ceil(products.length / productPerPage);
-    const changePage = ({ selected }) => {
-        setPageNumber(selected)
-    };
+    const visitedPage = pageNumber * productPerPage;
+    const displayPage = searchedProduct.slice(visitedPage, visitedPage + productPerPage);
+    const pageCount = Math.ceil(searchedProduct.length / productPerPage);
+    const changePage = ({ selected }) => { setPageNumber(selected) };
 
     return (
         <Helmet title='All-Foods'>
@@ -50,10 +58,7 @@ const AllFoods = () => {
                         </Col>
 
                         {
-                            displayPage?.filter(item => {
-                                if (searchTerm.value === "") return item;
-                                if (item.title.toLowerCase().includes(searchTerm.toLowerCase())) return item;
-                            }).map(item => (
+                            displayPage.map(item => (
                                 <Col lg="3" md="4" sm="6" xs="6" key={item.id} className="mb-4">
                                     <ProductCard item={item} />
                                 </Col>
