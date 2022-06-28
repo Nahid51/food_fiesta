@@ -33,8 +33,8 @@ const AllFoods = () => {
             <section>
                 <Container>
                     <Row>
-                        <Col lg="6" md="6" sm="6">
-                            <div className="search_widget d-flex align-items-center justify-content-between w-50">
+                        <Col lg="6" md="6" sm="6" xs="12">
+                            <div className="search_widget d-flex align-items-center justify-content-between">
                                 <input
                                     type="text"
                                     placeholder="I'm looking for..."
@@ -45,7 +45,7 @@ const AllFoods = () => {
                             </div>
                         </Col>
 
-                        <Col lg="6" md="6" sm="6" className='mb-5'>
+                        <Col lg="6" md="6" sm="6" xs="12" className='mb-5'>
                             <div className="sorting_widget text-end">
                                 <select className='w-50'>
                                     <option>Default</option>
