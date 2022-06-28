@@ -3,7 +3,7 @@ th {
 }
 
 .cart_img-box {
-    width: 100px;
+    width: 80px;
 }
 
 .cart_img-box img {
@@ -21,4 +21,12 @@ th {
 .cart_subtotal {
     color: #df2020;
     font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 768px) {
+
+    th,
+    td {
+        font-size: 0.8rem;
+    }
 }
