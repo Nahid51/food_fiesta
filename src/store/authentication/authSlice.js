@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     auth: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : {}
-}
+};
 
 export const authSlice = createSlice({
     name: 'user', initialState,
@@ -19,4 +19,4 @@ export const authSlice = createSlice({
 });
 
 export const { saveUser, removeUser } = authSlice.actions;
-export default authSlice.reducer;
+export default authSlice;
