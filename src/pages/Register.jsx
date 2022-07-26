@@ -52,7 +52,7 @@ const Register = () => {
 
                                 <button type='submit' className="addToCart_btn">Sign Up</button>
                             </form>
-                            <Link to="/login">Already have an account? Login here</Link>
+                            <Link to="/login">Already have an account? Login now</Link>
                         </Col>
 
                     </Row>
