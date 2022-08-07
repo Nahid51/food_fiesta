@@ -5,9 +5,6 @@ import { NavLink, Link } from 'react-router-dom';
 import '../../styles/header.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { cartUiAction } from '../../store/shopping-cart/cartUiSlice';
-import { signInWithPopup } from 'firebase/auth';
-import { auth, googleProvider } from '../../firebase/firebase';
-import { selectEmail, selectName, selectPhoto, setLogIn } from '../../store/authentication/userSlice';
 
 const nav_links = [
     {
@@ -52,23 +49,6 @@ const Header = () => {
         // return () => window.removeEventListener('scroll')
     }, []);
 
-    const authDispatch = useDispatch();
-    const name = useSelector(selectName);
-    const email = useSelector(selectEmail);
-    const photo = useSelector(selectPhoto);
-    console.log(name);
-    console.log(email);
-    console.log(photo);
-    const signIn = () => {
-        signInWithPopup(auth, googleProvider).then(result => {
-            const user = result.user;
-            authDispatch(setLogIn({
-                name: user.displayName,
-                email: user.email,
-                photo: user.photoURL
-            }))
-        })
-    }
 
     return (
         <header className='header' ref={headerRef}>
@@ -82,7 +62,7 @@ const Header = () => {
                     {/* ------menu------ */}
                     <div className="navigation" ref={menuRef} onClick={toggleMenu}>
                         <div className="menu d-flex align-items-center gap-5">
-                            <span className='user_name'>Signed in as: {name}</span>
+                            <span className='user_name'>Signed in as: Nahid</span>
                             {
                                 nav_links.map((item, index) => (
                                     <NavLink
@@ -94,12 +74,10 @@ const Header = () => {
                                 ))
                             }
                             <span className="user">
-                                {
-                                    email ? <i className="ri-logout-circle-line logout_btn"></i> :
-                                        <Link to='/login'>
-                                            <i className="ri-login-circle-line login_btn"></i>
-                                        </Link>
-                                }
+                                {/* <i className="ri-logout-circle-line logout_btn"></i> */}
+                                <Link to='/login'>
+                                    <i className="ri-login-circle-line login_btn"></i>
+                                </Link>
                             </span>
                         </div>
                     </div>

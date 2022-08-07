@@ -5,26 +5,9 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import login from '../assets/images/login.jpg';
 import '../styles/login.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectEmail, selectName, selectPhoto, setLogIn } from '../store/authentication/userSlice';
-import { signInWithPopup } from 'firebase/auth';
-import { auth, googleProvider } from '../firebase/firebase';
 
 const Login = () => {
-    const authDispatch = useDispatch();
-    const name = useSelector(selectName);
-    const email = useSelector(selectEmail);
-    const photo = useSelector(selectPhoto);
-    const signIn = () => {
-        signInWithPopup(auth, googleProvider).then(result => {
-            const user = result.user;
-            authDispatch(setLogIn({
-                name: user.displayName,
-                email: user.email,
-                photo: user.photoURL
-            }))
-        })
-    }
+
     return (
         <Helmet title="Login">
             <CommonSection title="Login" />
@@ -50,7 +33,7 @@ const Login = () => {
                             </div>
 
                             <div className='d-flex align-items-center justify-content-center gap-3'>
-                                <button onClick={signIn} className='google_icon'>
+                                <button className='google_icon'>
                                     <i className="ri-google-fill"></i>
                                 </button>
                                 <button className='facebook_icon'>
