@@ -49,15 +49,14 @@ const Header = () => {
         // return () => window.removeEventListener('scroll')
     }, []);
 
-
     return (
         <header className='header' ref={headerRef}>
             <Container>
                 <div className="nav_wrapper d-flex justify-content-between align-items-center">
-                    <div className="logo">
+                    <NavLink to="/" className="logo">
                         <img src={logo} alt="Logo" />
                         <h5>Food Fiesta</h5>
-                    </div>
+                    </NavLink>
 
                     {/* ------menu------ */}
                     <div className="navigation" ref={menuRef} onClick={toggleMenu}>

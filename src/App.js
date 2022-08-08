@@ -6,7 +6,7 @@ function App() {
 
   return (
     <div>
-      <ToastContainer />
+      <ToastContainer position="bottom-right" />
       <Layout />
     </div>
   );
