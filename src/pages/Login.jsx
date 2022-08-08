@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Helmet from '../components/Helmet/Helmet';
 import CommonSection from '../components/UI/commonSection/CommonSection';
-import { Container, Row, Col, Button, Form } from 'react-bootstrap';
+import { Container, Row, Col, Button, Form, Spinner } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import loginPhoto from '../assets/images/login.jpg';
 import { useDispatch, useSelector } from "react-redux";
@@ -55,6 +55,9 @@ const Login = () => {
                     <Row>
                         <Col lg="6" md="6" sm="12" className='text-center my-auto'>
                             <Form onSubmit={handleSubmit} className="mb-5 mx-3 p-3 rounded-1" style={{ background: "#FDE4E4" }}>
+                                <i style={{ color: "#212245" }} className="ri-user-follow-fill fs-5"></i>
+                                <h6 style={{ color: "#212245" }}>Sign In</h6>
+                                <hr className='mb-4' />
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
                                     <Form.Control
                                         className='border-top-0 border-start-0 border-end-0 rounded-0 bg-transparent'
@@ -79,9 +82,11 @@ const Login = () => {
                                     />
                                 </Form.Group>
 
-                                <Button style={{ fontSize: 14 }} variant="danger" type="submit">
-                                    Login
-                                </Button>
+                                {loading ? <Spinner animation="border" variant="warning" /> :
+                                    <Button style={{ fontSize: 14 }} variant="danger" type="submit">
+                                        Login
+                                    </Button>
+                                }
                             </Form>
 
                             <Link to="/register">Don't have an account? Sign Up</Link>
