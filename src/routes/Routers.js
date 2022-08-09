@@ -22,6 +22,16 @@ const Routers = () => {
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
                 <Route path='/contact' element={<Contact />} />
+
+
+
+                {/* <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}>
+                    <Route path="/dashboard/" element={<AddReview />} />
+                    <Route path="/dashboard/oneBlog/:id" element={<OneBlog />} />
+                    <Route path="/dashboard/addblog" element={<AdminRoute><AddBlog /></AdminRoute>} />
+                    <Route path="/dashboard/manageblog" element={<AdminRoute><ManageBlog /></AdminRoute>} />
+                </Route> */}
+
             </Routes>
         </div>
     );

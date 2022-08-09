@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCseULUC9tjLglLQUNuPNrtCtQJ1NAA8xM",
-    authDomain: "food-fiesta-ecc8c.firebaseapp.com",
-    projectId: "food-fiesta-ecc8c",
-    storageBucket: "food-fiesta-ecc8c.appspot.com",
-    messagingSenderId: "629915851571",
-    appId: "1:629915851571:web:ab1e4cc7ee625928cb7c46"
+    apiKey: process.env.REACT_APP_API_KEY,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_APP_ID,
 };
 
 // Initialize Firebase

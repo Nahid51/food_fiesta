@@ -21,6 +21,10 @@ const nav_links = [
         path: '/cart'
     },
     {
+        display: 'Dashboard',
+        path: '/dashboard'
+    },
+    {
         display: 'Contact',
         path: '/contact'
     },
