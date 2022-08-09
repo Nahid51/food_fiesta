@@ -116,12 +116,15 @@ const Login = () => {
                                 or Login with
                             </div>
 
-                            <div className='d-flex align-items-center justify-content-center gap-3'>
-                                <Button onClick={signInWithGoogle} variant="danger">
+                            <div>
+                                <Button onClick={signInWithGoogle} variant="danger" className='d-flex align-items-center justify-content-center gap-3 mx-auto mb-2'>
                                     <i className="ri-google-fill"></i>
+                                    <span>Sign in with google</span>
                                 </Button>
-                                <Button className='facebook_icon'>
+
+                                <Button className='d-flex align-items-center justify-content-center gap-3 mx-auto'>
                                     <i className="ri-facebook-fill"></i>
+                                    <span>Sign in with facebook</span>
                                 </Button>
                             </div>
                         </Col>
