@@ -5,6 +5,7 @@ import { NavLink, Link } from 'react-router-dom';
 import '../../styles/header.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { cartUiAction } from '../../store/shopping-cart/cartUiSlice';
+import { setLogout } from '../../store/authentication/userSlice';
 
 const nav_links = [
     {
@@ -49,6 +50,12 @@ const Header = () => {
         // return () => window.removeEventListener('scroll')
     }, []);
 
+    const { user } = useSelector(state => ({ ...state.auth }));
+
+    const handleLogout = () => {
+        dispatch(setLogout())
+    }
+
     return (
         <header className='header' ref={headerRef}>
             <Container>
@@ -61,7 +68,7 @@ const Header = () => {
                     {/* ------menu------ */}
                     <div className="navigation" ref={menuRef} onClick={toggleMenu}>
                         <div className="menu d-flex align-items-center gap-5">
-                            <span className='user_name'>Signed in as: Nahid</span>
+
                             {
                                 nav_links.map((item, index) => (
                                     <NavLink
@@ -72,23 +79,26 @@ const Header = () => {
                                     </NavLink>
                                 ))
                             }
+
                             <span className="user">
-                                {/* <i className="ri-logout-circle-line logout_btn"></i> */}
-                                <Link to='/login'>
-                                    <i className="ri-login-circle-line login_btn"></i>
-                                </Link>
+                                {user?.result?.email ?
+                                    <i onClick={handleLogout} className="ri-logout-circle-line logout_btn"></i>
+                                    :
+                                    <Link to='/login'>
+                                        <i className="ri-login-circle-line login_btn"></i>
+                                    </Link>}
                             </span>
                         </div>
                     </div>
 
                     {/* -----nav right icons----- */}
                     <div className="nav_right d-flex align-items-center gap-4">
+                        <span className='user_name'>{user?.result?.name}</span>
+
                         <span className="cart_icon" onClick={toggleCart}>
                             <i className="ri-shopping-basket-line"></i>
                             <span className="cart_badge">{totalQuantity}</span>
                         </span>
-
-
 
                         <span className='mobile_menu' onClick={toggleMenu}>
                             <i className="ri-menu-line"></i>

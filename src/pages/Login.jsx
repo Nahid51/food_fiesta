@@ -6,7 +6,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import loginPhoto from '../assets/images/login.jpg';
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { login } from '../store/authentication/userSlice';
+import { googleSignIn, login } from '../store/authentication/userSlice';
+import { auth, googleProvider } from '../firebase/firebase';
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 const initialState = {
     email: "",
@@ -33,6 +35,25 @@ const Login = () => {
     const onInputChange = (e) => {
         let { name, value } = e.target;
         setFormValue({ ...formValue, [name]: value });
+    };
+
+    const signInWithGoogle = e => {
+        signInWithPopup(auth, googleProvider)
+            .then((res) => {
+                const credential = GoogleAuthProvider.credentialFromResult(res);
+                const token = credential.accessToken;
+                const user = res.user;
+                console.log(user);
+                const name = user.displayName;
+                const email = user.email;
+                const googleId = user.uid;
+                const result = { email, name, token, googleId };
+                dispatch(googleSignIn({ result, navigate, toast }))
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                toast.error(errorMessage);
+            });
     };
 
     // const googleSuccess = (resp) => {
@@ -96,7 +117,7 @@ const Login = () => {
                             </div>
 
                             <div className='d-flex align-items-center justify-content-center gap-3'>
-                                <Button variant="danger">
+                                <Button onClick={signInWithGoogle} variant="danger">
                                     <i className="ri-google-fill"></i>
                                 </Button>
                                 <Button className='facebook_icon'>
