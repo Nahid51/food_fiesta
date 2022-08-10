@@ -21,10 +21,6 @@ const nav_links = [
         path: '/cart'
     },
     {
-        display: 'Dashboard',
-        path: '/dashboard'
-    },
-    {
         display: 'Contact',
         path: '/contact'
     },
@@ -83,6 +79,10 @@ const Header = () => {
                                     </NavLink>
                                 ))
                             }
+
+                            <div>
+                                <a href="http://localhost:4000" target="_blank" rel="noreferrer">Dashboard</a>
+                            </div>
 
                             <span className="user">
                                 {user?.result?.email ?
