@@ -1,25 +1,15 @@
-.header {
-    width: 100%;
-    height: 100px;
-    line-height: 100px;
-}
-
 .logo {
     text-align: center;
-    margin-top: -10px;
 }
 
 .logo img {
     width: calc(100% - 60%);
-    object-fit: contain;
-    margin-top: -40px;
 }
 
 .logo h5 {
     font-weight: 600;
     font-size: 1rem;
     color: #212245;
-    margin: -40px 0 0 0;
 }
 
 .menu a {
@@ -33,69 +23,48 @@
     color: #df2020;
 }
 
-.active_menu {
+.active {
     color: #df2020 !important;
 }
 
-.cart_icon {
-    position: relative;
+.cart_logo {
+    font-size: 1.6rem;
+    cursor: pointer;
 }
 
-.cart_badge {
+.cart_batch {
     position: absolute;
-    top: 30px;
-    right: -10px;
+    font-size: .8rem;
     background: #df2020;
     color: #fff;
-    width: 16px;
-    height: 16px;
+    padding: 1px 6px;
     border-radius: 50%;
-    font-size: .8rem;
-    font-weight: 500;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.mobile_menu {
-    font-weight: 600;
-    display: none;
-}
-
-.cart_icon i,
-.user i,
-.mobile_menu i {
-    color: "#212245";
-    font-size: 1.5rem;
-    cursor: pointer;
 }
 
 .logout_btn {
     background: #df2020;
     color: #fff;
     font-weight: 600;
-    padding: 5px 7px;
-    border-radius: 5px;
-    transition: 0.5s;
+    font-size: 14px;
+    border: none;
+    transition: all ease-in-out .3s;
+}
+
+.logout_btn:hover {
+    background: #bf4c4c;
 }
 
 .login_btn {
     background: #212245;
     color: #fff;
     font-weight: 600;
-    padding: 5px 7px;
-    border-radius: 5px;
-    transition: 0.5s;
+    font-size: 14px;
+    border: none;
+    transition: all ease-in-out .3s;
 }
 
-.logout_btn:hover,
 .login_btn:hover {
-    opacity: 0.75;
-}
-
-.mobile_menu {
-    font-weight: 600;
-    display: none;
+    background: #36386e;
 }
 
 .header_shrink {
@@ -107,10 +76,8 @@
     box-shadow: 5px 5px 15px -5px #fde4e4;
 }
 
-@media only screen and (max-width: 992px) {
-    /* .logo {
-        margin-top: -20px;
-    } */
+
+@media only screen and (max-width: 768px) {
 
     .logo img {
         width: calc(100% - 70%);
@@ -118,74 +85,6 @@
 
     .logo h5 {
         font-size: 0.8rem;
-        margin: -45px 0 0 0;
     }
 
-    .navigation {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.425);
-        z-index: 99;
-        display: none;
-    }
-
-    .menu {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 250px;
-        height: 100%;
-        background: #fff;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        z-index: 100;
-        line-height: 20px;
-    }
-
-    .menu a {
-        font-size: 0.9rem;
-    }
-
-    .mobile_menu {
-        display: block;
-    }
-
-    .cart_icon i,
-    .user i,
-    .mobile_menu i {
-        font-size: 1rem;
-    }
-
-    .show_menu {
-        display: block;
-    }
-
-}
-
-@media only screen and (max-width: 768px) {
-    .header {
-        width: 100%;
-        height: 80px;
-        line-height: 80px;
-    }
-
-    .logo {
-        margin-top: 10px;
-    }
-
-    .logo img {
-        margin-top: -70px;
-    }
-
-    .logo h5 {
-        margin-top: -50px;
-    }
-
-    .cart_badge {
-        top: 20px;
-    }
 }
