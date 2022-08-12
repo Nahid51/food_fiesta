@@ -6,7 +6,7 @@ export const login = createAsyncThunk("auth/login",
         try {
             const response = await api.signIn(formValue);
             toast.success("Login Successfully!");
-            navigate("/");
+            // navigate("/");
             return response.data;
         } catch (error) {
             return rejectWithValue(error.response.data);
@@ -32,7 +32,7 @@ export const googleSignIn = createAsyncThunk("auth/googleSignIn",
         try {
             const response = await api.googleSignIn(result);
             toast.success("Google Sign In Successfully!");
-            navigate("/");
+            // navigate("/");
             return response.data;
         } catch (error) {
             return rejectWithValue(error.response.data);

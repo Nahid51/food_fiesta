@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Helmet from '../components/Helmet/Helmet';
 import CommonSection from '../components/UI/commonSection/CommonSection';
 import { Container, Row, Col, Button, Form, Spinner } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import loginPhoto from '../assets/images/login.jpg';
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -21,6 +21,9 @@ const Login = () => {
     const { email, password } = formValue;
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const location = useLocation();
+
+    let from = location.state?.from?.pathname || "/";
 
     useEffect(() => {
         error && toast.error(error);
@@ -29,7 +32,8 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (email && password) {
-            dispatch(login({ formValue, navigate, toast }));
+            dispatch(login({ formValue, toast }));
+            navigate(from, { replace: true });
         }
     };
     const onInputChange = (e) => {
@@ -43,12 +47,12 @@ const Login = () => {
                 const credential = GoogleAuthProvider.credentialFromResult(res);
                 const token = credential.accessToken;
                 const user = res.user;
-                console.log(user);
                 const name = user.displayName;
                 const email = user.email;
                 const googleId = user.uid;
                 const result = { email, name, token, googleId };
-                dispatch(googleSignIn({ result, navigate, toast }))
+                dispatch(googleSignIn({ result, toast }));
+                navigate(from, { replace: true });
             })
             .catch((error) => {
                 const errorMessage = error.message;
@@ -56,17 +60,6 @@ const Login = () => {
             });
     };
 
-    // const googleSuccess = (resp) => {
-    //   const email = resp?.profileObj?.email;
-    //   const name = resp?.profileObj?.name;
-    //   const token = resp?.tokenId;
-    //   const googleId = resp?.googleId;
-    //   const result = { email, name, token, googleId };
-    //   dispatch(googleSignIn({ result, navigate, toast }));
-    // };
-    // const googleFailure = (error) => {
-    //   toast.error(error);
-    // };
 
     return (
         <Helmet title="Login">

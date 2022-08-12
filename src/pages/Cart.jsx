@@ -42,7 +42,7 @@ const Cart = () => {
 
                             <div className='mb-3'>
                                 <h6>Subtotal: $<span className='cart_subtotal'>{totalAmount}</span></h6>
-                                <p>Taxes and shipping eill calculate at chekout</p>
+                                <p>Taxes and shipping bill calculate at chekout</p>
                                 <div className='cart_page-btn'>
                                     <button className="addToCart_btn me-3">
                                         <Link to="/foods">Continue Shopping</Link>
