@@ -8,7 +8,8 @@ export const login = createAsyncThunk("auth/login",
             toast.success("Login Successfully!");
             // navigate("/");
             return response.data;
-        } catch (error) {
+        }
+        catch (error) {
             return rejectWithValue(error.response.data);
         }
     }
@@ -21,7 +22,8 @@ export const register = createAsyncThunk("auth/register",
             toast.success("Register Successfully!");
             navigate("/");
             return response.data;
-        } catch (error) {
+        }
+        catch (error) {
             return rejectWithValue(error.response.data);
         }
     }
@@ -30,15 +32,32 @@ export const register = createAsyncThunk("auth/register",
 export const googleSignIn = createAsyncThunk("auth/googleSignIn",
     async ({ result, navigate, toast }, { rejectWithValue }) => {
         try {
+            console.log(result)
             const response = await api.googleSignIn(result);
             toast.success("Google Sign In Successfully!");
             // navigate("/");
             return response.data;
-        } catch (error) {
+        }
+        catch (error) {
             return rejectWithValue(error.response.data);
         }
     }
 );
+
+export const makeAdmin = createAsyncThunk("auth/makeAdmin",
+    async ({ emailId, toast }, { rejectWithValue }) => {
+        try {
+            console.log(emailId)
+            const response = await api.makeAdmin(emailId);
+            toast.success("Make Admin Successfully!");
+            return response.data;
+        }
+        catch (error) {
+            return rejectWithValue(error.response.data);
+        }
+    }
+);
+
 
 const authSlice = createSlice({
     name: "auth",

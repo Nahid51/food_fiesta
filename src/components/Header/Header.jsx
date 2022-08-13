@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Button, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import logo from '../../assets/images/res-logo.png';
 import { NavLink, Link } from 'react-router-dom';
 import '../../styles/header.css';
@@ -51,13 +51,14 @@ const Header = () => {
                             <NavLink to="/foods">Foods</NavLink>
                             <NavLink to="/cart">Cart</NavLink>
                             <NavLink to="/contact">Contact</NavLink>
-                            <NavDropdown title="Admin" id="collasible-nav-dropdown">
+                            {user?.result?.email && <NavLink to="/contact">Review Us</NavLink>}
+                            {user?.result?.role && <NavDropdown title="Admin" id="collasible-nav-dropdown">
                                 <NavLink to="/addFood">Add New Foods</NavLink>
                                 <NavDropdown.Divider />
                                 <NavLink to="/editDelete">Edit and Delete Foods</NavLink>
                                 <NavDropdown.Divider />
                                 <NavLink to="/addAdmin">Add New Admin</NavLink>
-                            </NavDropdown>
+                            </NavDropdown>}
                         </Nav>
                         <Nav>
                             <div className='d-flex align-items-center justify-content-evenly'>
@@ -69,10 +70,10 @@ const Header = () => {
 
                                 <div className='ms-5'>
                                     {user?.result?.email ?
-                                        <Button onClick={handleLogout} className="logout_btn">LOGOUT</Button>
+                                        <button onClick={handleLogout} className="logout_btn">LOGOUT</button>
                                         :
                                         <Link to='/login'>
-                                            <Button className='login_btn'>LOGIN</Button>
+                                            <button className='login_btn'>LOGIN</button>
                                         </Link>}
                                 </div>
                             </div>

@@ -44,6 +44,8 @@
 .logout_btn {
     background: #df2020;
     color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
     font-weight: 600;
     font-size: 14px;
     border: none;
@@ -51,12 +53,14 @@
 }
 
 .logout_btn:hover {
-    background: #bf4c4c;
+    background: #e84e4e;
 }
 
 .login_btn {
     background: #212245;
     color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
     font-weight: 600;
     font-size: 14px;
     border: none;
