@@ -53,11 +53,11 @@ const Header = () => {
                             <NavLink to="/contact">Contact</NavLink>
                             {user?.result?.email && <NavLink to="/reviewUs">Review Us</NavLink>}
                             {user?.result?.role && <NavDropdown title="Admin" id="collasible-nav-dropdown">
-                                <NavLink to="/addFood">Add New Foods</NavLink>
+                                <NavLink to="/addEditFood" className="p-2">Add and Edit Food</NavLink>
                                 <NavDropdown.Divider />
-                                <NavLink to="/editDelete">Edit and Delete Foods</NavLink>
+                                <NavLink to="/editDelete" className="p-2">Delete Food</NavLink>
                                 <NavDropdown.Divider />
-                                <NavLink to="/addAdmin">Add New Admin</NavLink>
+                                <NavLink to="/addAdmin" className="p-2">Add New Admin</NavLink>
                             </NavDropdown>}
                         </Nav>
                         <Nav>

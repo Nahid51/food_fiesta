@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import AddAdmin from '../pages/AddAdmin';
-import AddFoods from '../pages/AddFoods';
+import AddEditFood from '../pages/AddEditFood';
 import AllFoods from '../pages/AllFoods';
 import Cart from '../pages/Cart';
 import Checkout from '../pages/Checkout';
@@ -30,7 +30,8 @@ const Routers = () => {
                 <Route path='/register' element={<Register />} />
                 <Route path='/contact' element={<Contact />} />
                 <Route path='/reviewUs' element={<PrivateRoute><ReviewUs /></PrivateRoute>} />
-                <Route path='/addFood' element={<AdminRoute><AddFoods /></AdminRoute>} />
+                <Route path='/addEditFood' element={<AdminRoute><AddEditFood /></AdminRoute>} />
+                <Route path='/addEditFood/:id' element={<AdminRoute><AddEditFood /></AdminRoute>} />
                 <Route path='/editDelete' element={<AdminRoute><EditDeleteFood /></AdminRoute>} />
                 <Route path='/addAdmin' element={<AdminRoute><AddAdmin /></AdminRoute>} />
 
