@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Helmet from '../components/Helmet/Helmet';
 import CommonSection from '../components/UI/commonSection/CommonSection';
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import registerPhoto from '../assets/images/register.jpg';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from "react-toastify";
@@ -90,6 +90,7 @@ const Register = () => {
                                         name="password"
                                         value={password}
                                         onChange={onInputChange}
+                                        autoComplete="off"
                                         placeholder="Password"
                                         required
                                     />
@@ -102,6 +103,7 @@ const Register = () => {
                                         name="confirmPassword"
                                         value={confirmPassword}
                                         onChange={onInputChange}
+                                        autoComplete="off"
                                         placeholder="Re-type Password"
                                         required
                                     />
@@ -113,7 +115,11 @@ const Register = () => {
                                     </Button>
                                 }
                             </Form>
-                            <Link to="/login">Already have an account? Sign In</Link>
+
+                            <div>
+                                <small>Already have an account?<NavLink to="/login" style={{ color: "blue" }}> Sign In</NavLink></small>
+                            </div>
+
                         </Col>
 
                     </Row>

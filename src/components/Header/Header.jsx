@@ -51,7 +51,7 @@ const Header = () => {
                             <NavLink to="/foods">Foods</NavLink>
                             <NavLink to="/cart">Cart</NavLink>
                             <NavLink to="/contact">Contact</NavLink>
-                            {user?.result?.email && <NavLink to="/contact">Review Us</NavLink>}
+                            {user?.result?.email && <NavLink to="/reviewUs">Review Us</NavLink>}
                             {user?.result?.role && <NavDropdown title="Admin" id="collasible-nav-dropdown">
                                 <NavLink to="/addFood">Add New Foods</NavLink>
                                 <NavDropdown.Divider />

@@ -32,7 +32,6 @@ export const register = createAsyncThunk("auth/register",
 export const googleSignIn = createAsyncThunk("auth/googleSignIn",
     async ({ result, navigate, toast }, { rejectWithValue }) => {
         try {
-            console.log(result)
             const response = await api.googleSignIn(result);
             toast.success("Google Sign In Successfully!");
             // navigate("/");
@@ -47,12 +46,19 @@ export const googleSignIn = createAsyncThunk("auth/googleSignIn",
 export const makeAdmin = createAsyncThunk("auth/makeAdmin",
     async ({ emailId, toast }, { rejectWithValue }) => {
         try {
-            console.log(emailId)
             const response = await api.makeAdmin(emailId);
-            toast.success("Make Admin Successfully!");
-            return response.data;
+            if (response?.data?.modifiedCount === 0) {
+                toast.warn("Already an admin!");
+                return response.data;
+            } else {
+
+                toast.success("Make Admin Successfully!");
+                return response.data;
+            }
         }
         catch (error) {
+            const err = error.response.data;
+            toast.error(err.message);
             return rejectWithValue(error.response.data);
         }
     }

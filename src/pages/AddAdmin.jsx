@@ -11,12 +11,12 @@ const AddAdmin = () => {
         email: email
     }
 
-    const handleMakeAdmin = (e) => {
+    const handleMakeAdmin = (e, key) => {
         e.preventDefault();
         if (emailId) {
             dispatch(makeAdmin({ emailId, toast }));
-            setEmail("");
         };
+        setEmail("");
     };
 
 

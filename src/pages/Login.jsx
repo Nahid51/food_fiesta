@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Helmet from '../components/Helmet/Helmet';
 import CommonSection from '../components/UI/commonSection/CommonSection';
 import { Container, Row, Col, Button, Form, Spinner } from 'react-bootstrap';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import loginPhoto from '../assets/images/login.jpg';
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -17,7 +17,7 @@ const initialState = {
 
 const Login = () => {
     const [formValue, setFormValue] = useState(initialState);
-    const { loading, error } = useSelector((state) => ({ ...state.auth }));
+    const { user, loading, error } = useSelector((state) => ({ ...state.auth }));
     const { email, password } = formValue;
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -33,9 +33,15 @@ const Login = () => {
         e.preventDefault();
         if (email && password) {
             dispatch(login({ formValue, toast }));
-            navigate(from, { replace: true });
-        }
+        };
     };
+
+    useEffect(() => {
+        if (user?.result?.email) {
+            navigate(from, { replace: true });
+        };
+    }, [from, navigate, user?.result?.email])
+
     const onInputChange = (e) => {
         let { name, value } = e.target;
         setFormValue({ ...formValue, [name]: value });
@@ -91,6 +97,7 @@ const Login = () => {
                                         value={password}
                                         name="password"
                                         onChange={onInputChange}
+                                        autoComplete="off"
                                         placeholder="Password"
                                         required
                                     />
@@ -103,7 +110,9 @@ const Login = () => {
                                 }
                             </Form>
 
-                            <Link to="/register">Don't have an account? Sign Up</Link>
+                            <div>
+                                <small>Don't have an account?<NavLink to="/register" style={{ color: "blue" }}> Sign Up</NavLink></small>
+                            </div>
 
                             <div className='mt-5 mb-2' style={{ color: "#212245" }}>
                                 or Login with

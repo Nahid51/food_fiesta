@@ -11,6 +11,8 @@ import FoodDetails from '../pages/FoodDetails';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
+import ReviewUs from '../pages/ReviewUs';
+import AdminRoute from '../redirects/AdminRoute';
 import PrivateRoute from '../redirects/PrivateRoute';
 
 const Routers = () => {
@@ -27,9 +29,10 @@ const Routers = () => {
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
                 <Route path='/contact' element={<Contact />} />
-                <Route path='/addFood' element={<AddFoods />} />
-                <Route path='/editDelete' element={<EditDeleteFood />} />
-                <Route path='/addAdmin' element={<AddAdmin />} />
+                <Route path='/reviewUs' element={<PrivateRoute><ReviewUs /></PrivateRoute>} />
+                <Route path='/addFood' element={<AdminRoute><AddFoods /></AdminRoute>} />
+                <Route path='/editDelete' element={<AdminRoute><EditDeleteFood /></AdminRoute>} />
+                <Route path='/addAdmin' element={<AdminRoute><AddAdmin /></AdminRoute>} />
 
             </Routes>
         </div>
