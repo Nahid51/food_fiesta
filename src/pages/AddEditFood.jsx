@@ -35,7 +35,7 @@ const AddEditFood = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (title && desc && category && price) {
-            const updatedFoodData = { ...foodData, email: user?.result?.email }
+            const updatedFoodData = { ...foodData, creator: user?.result?.email }
             dispatch(addFood({ updatedFoodData, navigate, toast }));
             handleClear();
         }

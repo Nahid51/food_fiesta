@@ -1,17 +1,42 @@
-import React, { useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Button, Col, Container, Row, Spinner } from 'react-bootstrap';
 import Helmet from '../components/Helmet/Helmet';
 import CommonSection from '../components/UI/commonSection/CommonSection';
-import products from '../assets/fake-data/products';
 import ProductCard from '../components/UI/product.card/ProductCard';
 import '../styles/allFoods.css';
 import '../styles/pagination.css';
 import ReactPaginate from 'react-paginate';
+import { useDispatch, useSelector } from 'react-redux';
+import { getFoods } from '../store/features/foodSlice';
 
 const AllFoods = () => {
+
     const [searchTerm, setSearchTerm] = useState("");
     const [pageNumber, setPageNumber] = useState(0);
-    const searchedProduct = products.filter((item) => {
+    const dispatch = useDispatch();
+
+    const { foods, loading } = useSelector((state) => ({ ...state.food }));
+    useEffect(() => {
+        dispatch(getFoods());
+    }, [dispatch]);
+
+    if (loading) {
+        return <div className='text-center'>
+            <Button className='text-center' variant="danger" disabled>
+                <Spinner
+                    as="span"
+                    animation="border"
+                    size="sm"
+                    role="status"
+                    aria-hidden="true"
+                />
+                Loading...
+            </Button>
+        </div>
+    };
+
+
+    const searchedProduct = foods.filter((item) => {
         if (searchTerm.value === "") {
             return item;
         }
@@ -59,7 +84,7 @@ const AllFoods = () => {
 
                         {
                             displayPage.map(item => (
-                                <Col lg="3" md="4" sm="6" xs="6" key={item.id} className="mb-4">
+                                <Col lg="3" md="4" sm="6" xs="6" key={item._id} className="mb-4">
                                     <ProductCard item={item} />
                                 </Col>
                             ))
