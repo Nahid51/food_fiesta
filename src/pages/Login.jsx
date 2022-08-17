@@ -47,7 +47,7 @@ const Login = () => {
         setFormValue({ ...formValue, [name]: value });
     };
 
-    const signInWithGoogle = e => {
+    const signInWithGoogle = () => {
         signInWithPopup(auth, googleProvider)
             .then((res) => {
                 const credential = GoogleAuthProvider.credentialFromResult(res);

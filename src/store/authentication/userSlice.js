@@ -2,11 +2,10 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import * as api from "../api";
 
 export const login = createAsyncThunk("auth/login",
-    async ({ formValue, navigate, toast }, { rejectWithValue }) => {
+    async ({ formValue, toast }, { rejectWithValue }) => {
         try {
             const response = await api.signIn(formValue);
             toast.success("Login Successfully!");
-            // navigate("/");
             return response.data;
         }
         catch (error) {
@@ -30,11 +29,11 @@ export const register = createAsyncThunk("auth/register",
 );
 
 export const googleSignIn = createAsyncThunk("auth/googleSignIn",
-    async ({ result, navigate, toast }, { rejectWithValue }) => {
+    async ({ result, toast }, { rejectWithValue }) => {
         try {
             const response = await api.googleSignIn(result);
+            console.log(response);
             toast.success("Google Sign In Successfully!");
-            // navigate("/");
             return response.data;
         }
         catch (error) {
@@ -47,7 +46,8 @@ export const makeAdmin = createAsyncThunk("auth/makeAdmin",
     async ({ emailId, toast }, { rejectWithValue }) => {
         try {
             const response = await api.makeAdmin(emailId);
-            if (response?.data?.modifiedCount === 0) {
+            console.log(response);
+            if (response?.data?.result?.modifiedCount === 0) {
                 toast.warn("Already an admin!");
                 return response.data;
             } else {

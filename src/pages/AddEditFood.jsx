@@ -10,7 +10,7 @@ const initialState = {
     price: "",
     category: "",
     desc: "",
-}
+};
 
 
 const AddEditFood = () => {
@@ -35,7 +35,7 @@ const AddEditFood = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (title && desc && category && price) {
-            const updatedFoodData = { ...foodData, name: user?.result?.email }
+            const updatedFoodData = { ...foodData, email: user?.result?.email }
             dispatch(addFood({ updatedFoodData, navigate, toast }));
             handleClear();
         }
@@ -77,7 +77,6 @@ const AddEditFood = () => {
                             value={price || ""}
                             name="price"
                             onChange={onInputChange}
-                            textarea
                             required
                         />
                     </div>
@@ -92,7 +91,8 @@ const AddEditFood = () => {
                     </div>
                 </div>
                 <div className="form_group">
-                    <input
+                    <textarea
+                        rows={3}
                         type="text"
                         placeholder='Description'
                         value={desc || ""}
@@ -102,7 +102,6 @@ const AddEditFood = () => {
                     />
                 </div>
                 <button className="logout_btn">Add Food</button>
-                <button onClick={handleClear} className="login_btn ms-3">Clear</button>
             </form>
         </div>
     );
