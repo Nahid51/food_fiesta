@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import products from '../assets/fake-data/products';
 import { useParams } from 'react-router-dom';
 import Helmet from '../components/Helmet/Helmet';
 import CommonSection from '../components/UI/commonSection/CommonSection';
@@ -7,25 +6,33 @@ import ProductCard from '../components/UI/product.card/ProductCard';
 import { Col, Container, Row } from 'react-bootstrap';
 import '../styles/foodDetails.css';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { cartActions } from '../store/shopping-cart/cartSlice';
+import { getFoods } from '../store/features/foodSlice';
 
 const FoodDetails = () => {
     const { id } = useParams();
+    console.log(id);
     const [tab, setTab] = useState('desc');
     const dispatch = useDispatch();
     const [enterName, setEnterName] = useState('');
     const [enterEmail, setEnterEmail] = useState('');
     const [reviewMsg, setReviewMsg] = useState('');
 
-    const product = products.find(product => product.id === id)
-    const [previewImg, setPreviewImg] = useState(product.image01);
-    const { title, price, category, desc, image01 } = product;
-    const relatedProduct = products.filter(item => category === item.category);
+    const { foods } = useSelector((state) => ({ ...state.food }));
+    console.log(foods)
+    useEffect(() => {
+        dispatch(getFoods());
+    }, [dispatch]);
+
+    const product = foods.find(pd => pd._id === id);
+    const [previewImg, setPreviewImg] = useState(product.imageFile);
+    const { title, price, category, desc, imageFile } = product;
+    const relatedProduct = foods.filter(item => category === item.category);
 
     const addItem = () => {
         dispatch(cartActions.addItem({
-            id, title, price, image01
+            id, title, price, imageFile
         }))
     }
 
@@ -35,7 +42,7 @@ const FoodDetails = () => {
     }
 
     useEffect(() => {
-        setPreviewImg(product.image01)
+        setPreviewImg(product.imageFile)
     }, [product]);
 
     useEffect(() => {
@@ -51,16 +58,16 @@ const FoodDetails = () => {
                     <Row>
                         <Col lg="2" md="2">
                             <div className='product_images'>
-                                <div className="img_item mb-3" onClick={() => setPreviewImg(product.image01)}>
-                                    <img src={product.image01} alt="Product_Image" className='w-50' />
+                                <div className="img_item mb-3" onClick={() => setPreviewImg(product.imageFile)}>
+                                    <img src={product.imageFile} alt="Product_Image" className='w-50' />
                                 </div>
 
-                                <div className="img_item mb-3" onClick={() => setPreviewImg(product.image02)}>
-                                    <img src={product.image02} alt="Product_Image" className='w-50' />
+                                <div className="img_item mb-3" onClick={() => setPreviewImg(product.imageFile)}>
+                                    <img src={product.imageFile} alt="Product_Image" className='w-50' />
                                 </div>
 
-                                <div className="img_item" onClick={() => setPreviewImg(product.image03)}>
-                                    <img src={product.image03} alt="Product_Image" className='w-50' />
+                                <div className="img_item" onClick={() => setPreviewImg(product.imageFile)}>
+                                    <img src={product.imageFile} alt="Product_Image" className='w-50' />
                                 </div>
                             </div>
                         </Col>
@@ -142,7 +149,7 @@ const FoodDetails = () => {
 
                         {
                             relatedProduct.map(item => (
-                                <Col lg="3" md="4" sm="6" xs="6" key={item.id}>
+                                <Col lg="3" md="4" sm="6" xs="6" key={item._id}>
                                     <ProductCard item={item} />
                                 </Col>
                             ))

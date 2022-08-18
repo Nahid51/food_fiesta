@@ -11,6 +11,8 @@ const Carts = () => {
     const cartProducts = useSelector(state => state.cart.cartItems);
     const totalAmount = useSelector(state => state.cart.totalAmount);
 
+    console.log(cartProducts);
+
     const toggleCart = () => {
         dispatch(cartUiAction.toggle())
     };
@@ -25,7 +27,7 @@ const Carts = () => {
                 <div className="cart_item-list">
                     {
                         cartProducts.length === 0 ? <h6 className='text-center mt-5'>No item added to the cart</h6> : cartProducts.map((item, index) => (
-                            <CartItem item={item} key={index} />
+                            <CartItem item={item} key={item._id} />
                         ))
                     }
                 </div>

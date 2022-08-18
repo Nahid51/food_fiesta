@@ -33,7 +33,7 @@ const Cart = () => {
                                         <tbody>
                                             {
                                                 cartItems.map(item => (
-                                                    <Tr item={item} key={item.id} />
+                                                    <Tr item={item} key={item._id} />
                                                 ))
                                             }
                                         </tbody>
@@ -61,15 +61,15 @@ const Cart = () => {
 };
 
 const Tr = ({ item }) => {
-    const { id, image01, title, price, quantity } = item;
+    const { _id, imageFile, title, price, quantity } = item;
     const dispatch = useDispatch();
     const deleteItem = () => {
-        dispatch(cartActions.deleteItem(id))
+        dispatch(cartActions.deleteItem(_id))
     }
     return (
         <tr>
             <td className='text-center cart_img-box'>
-                <img src={image01} alt="Food_Photo" />
+                <img src={imageFile} alt="Food_Photo" />
             </td>
             <td className='text-center'>{title}</td>
             <td className='text-center'>${price}</td>

@@ -6,6 +6,7 @@ import { cartActions } from '../../../store/shopping-cart/cartSlice';
 
 const ProductCard = ({ item }) => {
     const { _id, title, imageFile, price } = item;
+    console.log(_id);
     const dispatch = useDispatch();
 
     const addToCart = () => {

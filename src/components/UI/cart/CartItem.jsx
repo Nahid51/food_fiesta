@@ -5,25 +5,25 @@ import { useDispatch } from 'react-redux';
 import { cartActions } from '../../../store/shopping-cart/cartSlice';
 
 const CartItem = ({ item }) => {
-    const { id, title, price, image01, quantity, totalPrice } = item;
+    const { _id, title, price, imageFile, quantity, totalPrice } = item;
     const dispatch = useDispatch();
     const incrementItem = () => {
         dispatch(cartActions.addItem({
-            id, title, price, image01
+            _id, title, price, imageFile
         }))
     };
     const decreseItem = () => {
-        dispatch(cartActions.removeItem(id))
+        dispatch(cartActions.removeItem(_id))
     };
     const deleteItem = () => {
-        dispatch(cartActions.deleteItem(id))
+        dispatch(cartActions.deleteItem(_id))
     };
 
     return (
         <div>
             <ListGroupItem className='border-0 cart_item'>
                 <div className="cart_item-info d-flex gap-2">
-                    <img src={image01} alt="product-img" />
+                    <img src={imageFile} alt="product-img" />
 
                     <div className="cart_product-info w-100 d-flex align-items-center justify-content-center gap-4">
                         <div>

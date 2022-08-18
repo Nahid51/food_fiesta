@@ -9,7 +9,6 @@ import Category from '../components/UI/category/Category';
 import featureImg01 from '../assets/images/service-01.png';
 import featureImg02 from '../assets/images/service-02.png';
 import featureImg03 from '../assets/images/service-03.png';
-import products from '../assets/fake-data/products';
 import foodCategoryImg01 from '../assets/images/hamburger.png';
 import foodCategoryImg02 from '../assets/images/pizza.png';
 import foodCategoryImg03 from '../assets/images/bread.png';
@@ -17,6 +16,8 @@ import ProductCard from '../components/UI/product.card/ProductCard';
 import whyImg from '../assets/images/location.png';
 import networkImg from '../assets/images/network.png';
 import TestimonialSlider from '../components/UI/slider/TestimonialSlider';
+import { useDispatch, useSelector } from 'react-redux';
+import { getFoods } from '../store/features/foodSlice';
 
 const featureData = [
     {
@@ -37,33 +38,39 @@ const featureData = [
 ]
 
 const Home = () => {
+    const dispatch = useDispatch();
+    const { foods } = useSelector((state) => ({ ...state.food }));
+    useEffect(() => {
+        dispatch(getFoods());
+    }, [dispatch]);
+
     const [category, setCategory] = useState("ALL");
-    const [allProducts, setAllProducts] = useState(products);
+    const [allProducts, setAllProducts] = useState(foods);
     const [hotPizza, setHotPizza] = useState([]);
 
     useEffect(() => {
-        const filterPizza = products.filter(item => item.category === "Pizza")
+        const filterPizza = foods.filter(item => item.category === "Pizza")
         const slicePizza = filterPizza.slice(0, 4)
         setHotPizza(slicePizza)
-    }, []);
+    }, [foods]);
 
     useEffect(() => {
         if (category === "ALL") {
-            setAllProducts(products)
+            setAllProducts(foods)
         }
         if (category === "BURGER") {
-            const filterProducts = products.filter(item => item.category === "Burger")
+            const filterProducts = foods.filter(item => item.category === "Burger")
             setAllProducts(filterProducts)
         }
         if (category === "PIZZA") {
-            const filterProducts = products.filter(item => item.category === "Pizza")
+            const filterProducts = foods.filter(item => item.category === "Pizza")
             setAllProducts(filterProducts)
         }
         if (category === "BREAD") {
-            const filterProducts = products.filter(item => item.category === "Bread")
+            const filterProducts = foods.filter(item => item.category === "Bread")
             setAllProducts(filterProducts)
         }
-    }, [category]);
+    }, [category, foods]);
 
     return (
         <Helmet title="Home">
@@ -159,7 +166,7 @@ const Home = () => {
 
                         {
                             allProducts.map(item => (
-                                <Col col="3" md="4" sm="6" xs="6" key={item.id} className="mt-5">
+                                <Col col="3" md="4" sm="6" xs="6" key={item._id} className="mt-5">
                                     <ProductCard item={item} />
                                 </Col>
                             ))
@@ -222,7 +229,7 @@ const Home = () => {
 
                         {
                             hotPizza.map(item => (
-                                <Col lg="3" md="4" key={item.id}>
+                                <Col lg="3" md="4" key={item._id}>
                                     <ProductCard item={item} />
                                 </Col>
                             ))

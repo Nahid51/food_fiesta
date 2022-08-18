@@ -12,14 +12,13 @@ const initialState = {
     desc: "",
 };
 
-
 const AddEditFood = () => {
     const [foodData, setFoodData] = useState(initialState);
     const { title, desc, category, price } = foodData;
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const { error, loading } = useSelector((state) => ({ ...state.food }));
+    const { error } = useSelector((state) => ({ ...state.food }));
     const { user } = useSelector((state) => ({ ...state.auth }));
 
     useEffect(() => {
