@@ -12,8 +12,9 @@ export const addFood = (foodData) => API.post("/foods", foodData);
 export const getFoods = () => API.get("/foods");
 export const getFood = (id) => API.get(`/foods/${id}`);
 
-export const deleteFood = (id) => API.delete(`/foods/${id}`);
-export const updateFood = (updatedTourData, id) =>
-    API.patch(`/foods/${id}`, updatedTourData);
-
 export const getFoodsByUser = (userEmail) => API.get(`/foods/userFoods/${userEmail}`);
+
+export const deleteFood = (id) => API.delete(`/foods/${id}`);
+export const updateFood = (updatedFoodData, id) =>
+    API.patch(`/foods/${id}`, updatedFoodData);
+

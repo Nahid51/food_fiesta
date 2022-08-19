@@ -1,0 +1,29 @@
+.editDeleteCard_image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+}
+
+.editDeleteIcon {
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 1200px) {
+    .editDeleteCard_image {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .editDeleteCard_image {
+        width: 75%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .editDeleteCard_image {
+        width: 100%;
+    }
+}

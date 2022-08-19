@@ -34,7 +34,7 @@ const EditDeleteFood = () => {
     return (
         <div>
             <Container>
-                <Table bordered hover responsive>
+                <Table bordered hover responsive className='my-3'>
                     <thead>
                         <tr>
                             <th>Image</th>

@@ -31,7 +31,19 @@ export const getFoodsByUser = createAsyncThunk("foods/getFoodsByUser",
     async (userEmail, { rejectWithValue }) => {
         try {
             const response = await api.getFoodsByUser(userEmail);
-            console.log(response);
+            return response.data;
+        }
+        catch (error) {
+            return rejectWithValue(error.response.data);
+        }
+    }
+);
+
+export const deleteFood = createAsyncThunk("foods/deleteFood",
+    async ({ id, toast }, { rejectWithValue }) => {
+        try {
+            const response = await api.deleteFood(id);
+            toast.success("Food Deleted Successfully!");
             return response.data;
         }
         catch (error) {
@@ -81,6 +93,21 @@ const foodSlice = createSlice({
             state.userFoods = action.payload;
         },
         [getFoodsByUser.rejected]: (state, action) => {
+            state.loading = false;
+            state.error = action.payload.message;
+        },
+        [deleteFood.pending]: (state, action) => {
+            state.loading = true;
+        },
+        [deleteFood.fulfilled]: (state, action) => {
+            state.loading = false;
+            const { arg: { id } } = action.meta;
+            if (id) {
+                state.userFoods = state.userFoods.filter(item => item._id !== id);
+                state.foods = state.foods.filter(item => item._id !== id);
+            }
+        },
+        [deleteFood.rejected]: (state, action) => {
             state.loading = false;
             state.error = action.payload.message;
         },
