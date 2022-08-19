@@ -11,7 +11,9 @@ export const makeAdmin = (emailId) => API.put("/users/makeAdmin", emailId);
 export const addFood = (foodData) => API.post("/foods", foodData);
 export const getFoods = () => API.get("/foods");
 export const getFood = (id) => API.get(`/foods/${id}`);
+
 export const deleteFood = (id) => API.delete(`/foods/${id}`);
 export const updateFood = (updatedTourData, id) =>
     API.patch(`/foods/${id}`, updatedTourData);
-export const getFoodsByUser = (userId) => API.get(`/foods/userTours/${userId}`);
+
+export const getFoodsByUser = (userEmail) => API.get(`/foods/userFoods/${userEmail}`);

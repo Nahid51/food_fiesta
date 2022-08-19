@@ -12,7 +12,6 @@ import { getFoods } from '../store/features/foodSlice';
 
 const FoodDetails = () => {
     const { id } = useParams();
-    console.log(id);
     const [tab, setTab] = useState('desc');
     const dispatch = useDispatch();
     const [enterName, setEnterName] = useState('');
@@ -20,7 +19,6 @@ const FoodDetails = () => {
     const [reviewMsg, setReviewMsg] = useState('');
 
     const { foods } = useSelector((state) => ({ ...state.food }));
-    console.log(foods)
     useEffect(() => {
         dispatch(getFoods());
     }, [dispatch]);
@@ -47,7 +45,7 @@ const FoodDetails = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0)
-    }, [product]);
+    }, []);
 
 
     return (
