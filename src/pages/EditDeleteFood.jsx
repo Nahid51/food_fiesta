@@ -34,26 +34,30 @@ const EditDeleteFood = () => {
     return (
         <div>
             <Container>
-                <Table bordered hover responsive className='my-3'>
-                    <thead>
-                        <tr>
-                            <th>Image</th>
-                            <th>Title</th>
-                            <th>Price</th>
-                            <th>Description</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {userFoods.map((foods) => (
-                            <EditDeleteCard
-                                key={foods._id}
-                                foods={foods}
-                            ></EditDeleteCard>
-                        ))}
-                    </tbody>
-                </Table>
+                {userFoods.length === 0 ?
+                    <h5 className='text-center my-5'>No food added by {userEmail}</h5>
+                    :
+                    <Table bordered hover responsive className='my-3'>
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Title</th>
+                                <th>Price</th>
+                                <th>Description</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {userFoods.map((foods) => (
+                                <EditDeleteCard
+                                    key={foods._id}
+                                    foods={foods}
+                                ></EditDeleteCard>
+                            ))}
+                        </tbody>
+                    </Table>
+                }
             </Container>
         </div>
     );
