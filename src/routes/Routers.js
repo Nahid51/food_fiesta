@@ -10,6 +10,7 @@ import EditDeleteFood from '../pages/EditDeleteFood';
 import FoodDetails from '../pages/FoodDetails';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
+import NotFound from '../pages/NotFound';
 import Register from '../pages/Register';
 import ReviewUs from '../pages/ReviewUs';
 import AdminRoute from '../redirects/AdminRoute';
@@ -34,6 +35,7 @@ const Routers = () => {
                 <Route path='/addEditFood/:id' element={<AdminRoute><AddEditFood /></AdminRoute>} />
                 <Route path='/editDelete' element={<AdminRoute><EditDeleteFood /></AdminRoute>} />
                 <Route path='/addAdmin' element={<AdminRoute><AddAdmin /></AdminRoute>} />
+                <Route path='*' element={<NotFound />} />
 
             </Routes>
         </div>

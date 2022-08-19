@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import FileBase64 from 'react-file-base64';
 import { toast } from "react-toastify";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { addFood } from '../store/features/foodSlice';
+import { addFood, updateFood } from '../store/features/foodSlice';
 
 const initialState = {
     title: "",
@@ -14,12 +14,22 @@ const initialState = {
 
 const AddEditFood = () => {
     const [foodData, setFoodData] = useState(initialState);
-    const { title, desc, category, price } = foodData;
+    const { error, userFoods } = useSelector((state) => ({ ...state.food }));
+    const { user } = useSelector((state) => ({ ...state.auth }));
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const { error } = useSelector((state) => ({ ...state.food }));
-    const { user } = useSelector((state) => ({ ...state.auth }));
+    const { title, desc, category, price } = foodData;
+    const { id } = useParams();
+
+    useEffect(() => {
+        if (id) {
+            const singleFood = userFoods.find(food => food._id === id);
+            setFoodData({ ...singleFood });
+        }
+    }, [userFoods, id]);
+
+
 
     useEffect(() => {
         error && toast.error(error);
@@ -34,8 +44,14 @@ const AddEditFood = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (title && desc && category && price) {
-            const updatedFoodData = { ...foodData, creator: user?.result?.email }
-            dispatch(addFood({ updatedFoodData, navigate, toast }));
+            const updatedFoodData = { ...foodData, creator: user?.result?.email };
+
+            if (!id) {
+                dispatch(addFood({ updatedFoodData, navigate, toast }));
+            }
+            else {
+                dispatch(updateFood({ id, updatedFoodData, navigate, toast }));
+            }
             handleClear();
         }
     };
@@ -46,7 +62,7 @@ const AddEditFood = () => {
 
     return (
         <div className='w-50 mx-auto my-5'>
-            <h5 className='mb-4'>Add Food</h5>
+            <h5 className='mb-4'>{id ? "Update Food" : "Add Food"}</h5>
             <form onSubmit={handleSubmit} className=' border rounded p-3'>
                 <div className="form_group">
                     <input
@@ -100,7 +116,7 @@ const AddEditFood = () => {
                         required
                     />
                 </div>
-                <button className="logout_btn">Add Food</button>
+                <button className="logout_btn">{id ? "Update Food" : "Add Food"}</button>
             </form>
         </div>
     );

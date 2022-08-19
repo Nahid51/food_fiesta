@@ -1,0 +1,16 @@
+.notFouond_page {
+    width: 50%;
+    margin: 20px 0;
+}
+
+@media only screen and (max-width : 1200px) {
+    .notFouond_page {
+        width: 75%;
+    }
+}
+
+@media only screen and (max-width : 768px) {
+    .notFouond_page {
+        width: 100%;
+    }
+}

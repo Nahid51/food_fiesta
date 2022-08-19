@@ -55,7 +55,7 @@ const Header = () => {
                             {user?.result?.role && <NavDropdown title="Admin" id="collasible-nav-dropdown">
                                 <NavLink to="/addEditFood" className="p-2">Add and Edit Food</NavLink>
                                 <NavDropdown.Divider />
-                                <NavLink to="/editDelete" className="p-2">Delete Food</NavLink>
+                                <NavLink to="/editDelete" className="p-2">Delete and Update Food</NavLink>
                                 <NavDropdown.Divider />
                                 <NavLink to="/addAdmin" className="p-2">Add New Admin</NavLink>
                             </NavDropdown>}

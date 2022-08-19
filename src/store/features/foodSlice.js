@@ -52,6 +52,20 @@ export const deleteFood = createAsyncThunk("foods/deleteFood",
     }
 );
 
+export const updateFood = createAsyncThunk("foods/updateFood",
+    async ({ id, updatedFoodData, navigate, toast, }, { rejectWithValue }) => {
+        try {
+            const response = await api.updateFood(updatedFoodData, id);
+            toast.success("Food Updated Successfully!");
+            navigate("/foods");
+            return response.data;
+        }
+        catch (error) {
+            return rejectWithValue(error.response.data);
+        }
+    }
+);
+
 
 const foodSlice = createSlice({
     name: "food",
@@ -108,6 +122,21 @@ const foodSlice = createSlice({
             }
         },
         [deleteFood.rejected]: (state, action) => {
+            state.loading = false;
+            state.error = action.payload.message;
+        },
+        [updateFood.pending]: (state, action) => {
+            state.loading = true;
+        },
+        [updateFood.fulfilled]: (state, action) => {
+            state.loading = false;
+            const { arg: { id } } = action.meta;
+            if (id) {
+                state.userFoods = state.userFoods.map(item => item._id === id ? action.payload : item);
+                state.foods = state.foods.map(item => item._id === id ? action.payload : item);
+            }
+        },
+        [updateFood.rejected]: (state, action) => {
             state.loading = false;
             state.error = action.payload.message;
         },
