@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "https://pacific-falls-28087.herokuapp.com" });
+const API = axios.create({ baseURL: "http://localhost:5000" });
+// http://localhost:5000
+// https://pacific-falls-28087.herokuapp.com
 
 
 export const signIn = (formData) => API.post("/users/signin", formData);
@@ -15,6 +17,8 @@ export const getFood = (id) => API.get(`/foods/${id}`);
 export const getFoodsByUser = (userEmail) => API.get(`/foods/userFoods/${userEmail}`);
 
 export const deleteFood = (id) => API.delete(`/foods/${id}`);
-export const updateFood = (updatedFoodData, id) =>
-    API.patch(`/foods/${id}`, updatedFoodData);
+export const updateFood = (updatedFoodData, id) => API.patch(`/foods/${id}`, updatedFoodData);
+
+export const reviewFood = (reviewFoodData, id) => API.put(`/foods/${id}`, reviewFoodData);
+export const getReviewsByFood = (id) => API.get(`/foods/review/${id}`);
 

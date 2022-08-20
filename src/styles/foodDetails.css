@@ -127,8 +127,7 @@
     }
 
     .tab_content,
-    .user_name,
-    .feedback_text {
+    .user_name {
         font-size: 0.8rem;
     }
 

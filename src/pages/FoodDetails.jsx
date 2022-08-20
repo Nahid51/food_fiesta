@@ -8,15 +8,21 @@ import '../styles/foodDetails.css';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { cartActions } from '../store/shopping-cart/cartSlice';
-import { getFoods } from '../store/features/foodSlice';
+import { getFoods, getReviewsByFood, reviewFood } from '../store/features/foodSlice';
+import { toast } from "react-toastify";
+
+const initialstate = {
+    name: "",
+    email: "",
+    reviewMsg: ""
+};
 
 const FoodDetails = () => {
     const { id } = useParams();
     const [tab, setTab] = useState('desc');
     const dispatch = useDispatch();
-    const [enterName, setEnterName] = useState('');
-    const [enterEmail, setEnterEmail] = useState('');
-    const [reviewMsg, setReviewMsg] = useState('');
+    const [review, setReview] = useState(initialstate);
+    const { name, email, reviewMsg } = review;
 
     const { foods } = useSelector((state) => ({ ...state.food }));
     useEffect(() => {
@@ -34,17 +40,33 @@ const FoodDetails = () => {
         }))
     }
 
-    const submitHandler = e => {
-        e.preventDefault();
-        console.log(enterName, enterEmail, reviewMsg);
-    }
-
     useEffect(() => {
         setPreviewImg(product.imageFile)
     }, [product]);
 
+
+    const onInputChange = (e) => {
+        const { name, value } = e.target;
+        setReview({ ...review, [name]: value });
+    };
+
+    const handleReviewForm = e => {
+        e.preventDefault();
+        if (name && email && reviewMsg) {
+            const reviewFoodData = { ...review };
+            console.log(reviewFoodData);
+            dispatch(reviewFood({ id, reviewFoodData, navigator, toast }));
+        }
+    };
+
+    const { foodReviews } = useSelector((state) => ({ ...state.food }));
     useEffect(() => {
-        window.scrollTo(0, 0)
+        dispatch(getReviewsByFood(id));
+    }, [dispatch, id]);
+
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
     }, []);
 
 
@@ -97,33 +119,38 @@ const FoodDetails = () => {
                                         <p>{desc}</p>
                                     </div> :
                                     <div className="tab_form mb-3">
-                                        <div className="review_text">
+                                        {foodReviews[0]?.review?.map((item, index) =>
+                                            <div className="review_text" key={index}>
+                                                <p className="user_name mb-0">{item?.name}</p>
+                                                <p className="user_email mb-0">{item?.email}</p>
+                                                <p className='feedback_text'>{item?.reviewMsg}</p>
+                                            </div>
+                                        )
+                                        }
+
+                                        {/* <div className="review_text">
                                             <p className="user_name mb-0">Jhon Deo</p>
                                             <p className="user_email">jhon02@gmai.com</p>
                                             <p className='feedback_text'>great product</p>
-                                        </div>
+                                        </div> */}
 
-                                        <div className="review_text">
-                                            <p className="user_name mb-0">Jhon Deo</p>
-                                            <p className="user_email">jhon02@gmai.com</p>
-                                            <p className='feedback_text'>great product</p>
-                                        </div>
-
-                                        <form className="form" onSubmit={submitHandler}>
+                                        <form className="form" onSubmit={handleReviewForm}>
                                             <div className='form_group'>
                                                 <input
                                                     type="text"
                                                     placeholder='Enter your name'
-                                                    onChange={e => setEnterName(e.target.value)}
+                                                    name='name'
+                                                    onChange={onInputChange}
                                                     required
                                                 />
                                             </div>
 
                                             <div className='form_group'>
                                                 <input
-                                                    type="text"
+                                                    type="email"
                                                     placeholder='Enter your email'
-                                                    onChange={e => setEnterEmail(e.target.value)}
+                                                    name='email'
+                                                    onChange={onInputChange}
                                                     required
                                                 />
                                             </div>
@@ -133,7 +160,9 @@ const FoodDetails = () => {
                                                     rows={4}
                                                     type="text"
                                                     placeholder='Write your review'
-                                                    onChange={e => setReviewMsg(e.target.value)}
+                                                    name='reviewMsg'
+                                                    onChange={onInputChange}
+                                                    required
                                                 />
                                             </div>
                                             <button type='submit' className='addToCart_btn'>Submit</button>

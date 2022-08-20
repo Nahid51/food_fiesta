@@ -5,14 +5,12 @@ import AddEditFood from '../pages/AddEditFood';
 import AllFoods from '../pages/AllFoods';
 import Cart from '../pages/Cart';
 import Checkout from '../pages/Checkout';
-import Contact from '../pages/Contact';
 import EditDeleteFood from '../pages/EditDeleteFood';
 import FoodDetails from '../pages/FoodDetails';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import NotFound from '../pages/NotFound';
 import Register from '../pages/Register';
-import ReviewUs from '../pages/ReviewUs';
 import AdminRoute from '../redirects/AdminRoute';
 import PrivateRoute from '../redirects/PrivateRoute';
 
@@ -29,8 +27,6 @@ const Routers = () => {
                 <Route path='/checkout' element={<PrivateRoute><Checkout /></PrivateRoute>} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
-                <Route path='/contact' element={<Contact />} />
-                <Route path='/reviewUs' element={<PrivateRoute><ReviewUs /></PrivateRoute>} />
                 <Route path='/addEditFood' element={<AdminRoute><AddEditFood /></AdminRoute>} />
                 <Route path='/addEditFood/:id' element={<AdminRoute><AddEditFood /></AdminRoute>} />
                 <Route path='/editDelete' element={<AdminRoute><EditDeleteFood /></AdminRoute>} />
