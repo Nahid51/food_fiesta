@@ -1,10 +1,26 @@
-import React from 'react';
-import { Container, Row, Col, ListGroup, ListGroupItem } from 'react-bootstrap';
+import React, { useRef } from 'react';
+import { Container, Row, Col, ListGroup, ListGroupItem, Form, Button } from 'react-bootstrap';
 import logo from '../../assets/images/res-logo.png';
 import '../../styles/footer.css';
-import { Link } from 'react-router-dom';
+import emailjs from '@emailjs/browser';
+import { toast } from "react-toastify";
 
 const Footer = () => {
+
+    const form = useRef();
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        emailjs.sendForm('service_1kbj7kp', 'template_alowi8m', form.current, 'bnuzjboBxr-nvfU8L')
+            .then((result) => {
+                toast.success(`${result.text}, Message sent!`);
+            }, (error) => {
+                toast.error(error.text);
+            });
+        e.target.reset();
+    };
+
     return (
         <footer className="footer">
             <Container>
@@ -47,12 +63,32 @@ const Footer = () => {
                     </Col>
 
                     <Col lg='3' md='4' sm='6'>
-                        <h5 className='footer_title'>Newsletter</h5>
-                        <p>Subscribe our newsletter</p>
-                        <div className="newsletter">
-                            <input type="email" placeholder='Enter your email' />
-                            <span><i className="ri-send-plane-line"></i></span>
-                        </div>
+                        <h5 className='footer_title mb-3'>Feedback</h5>
+                        <Form ref={form} onSubmit={sendEmail}>
+                            <Form.Group className="mb-1" controlId="exampleForm.ControlInput1">
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Your Name"
+                                    name="name"
+                                    required />
+                            </Form.Group>
+                            <Form.Group className="mb-1" controlId="exampleForm.ControlInput1">
+                                <Form.Control
+                                    type="email"
+                                    placeholder="Email Address"
+                                    name="email"
+                                    required />
+                            </Form.Group>
+                            <Form.Group className="mb-1" controlId="exampleForm.ControlTextarea1">
+                                <Form.Control
+                                    as="textarea"
+                                    placeholder='Message'
+                                    name="message"
+                                    rows={2}
+                                    required />
+                            </Form.Group>
+                            <Button type='submit' variant='danger'>Send</Button>
+                        </Form>
                     </Col>
                 </Row>
 
@@ -63,13 +99,13 @@ const Footer = () => {
                     <Col lg='6' md='6'>
                         <div className="social_links d-flex align-items-center justify-content-end gap-4">
                             <p className='m-0'>Follow: </p>
-                            <span><Link to="https://www.facebook.com"><i className="ri-facebook-line"></i></Link></span>
+                            <span><a href="https://www.facebook.com" target="_blank" rel="noreferrer"><i className="ri-facebook-box-fill"></i></a></span>
 
-                            <span><Link to="https://github.com/Nahid51"><i className="ri-github-line"></i></Link></span>
+                            <span><a href="https://github.com/Nahid51" target="_blank" rel="noreferrer"><i className="ri-github-fill"></i></a></span>
 
-                            <span><Link to="https://www.youtube.com"><i className="ri-youtube-line"></i></Link></span>
+                            <span><a href="https://www.youtube.com" target="_blank" rel="noreferrer"><i className="ri-youtube-fill"></i></a></span>
 
-                            <span><Link to="https://www.linkedin.com/in/md-nahid-hasan-12a720199/"><i className="ri-linkedin-line"></i></Link></span>
+                            <span><a href="https://www.linkedin.com/in/md-nahid-hasan-12a720199/" target="_blank" rel="noreferrer"><i className="ri-linkedin-box-fill"></i></a></span>
                         </div>
                     </Col>
                 </Row>
