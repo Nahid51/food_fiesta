@@ -119,20 +119,16 @@ const FoodDetails = () => {
                                         <p>{desc}</p>
                                     </div> :
                                     <div className="tab_form mb-3">
-                                        {foodReviews[0]?.review?.map((item, index) =>
-                                            <div className="review_text" key={index}>
-                                                <p className="user_name mb-0">{item?.name}</p>
-                                                <p className="user_email mb-0">{item?.email}</p>
-                                                <p className='feedback_text'>{item?.reviewMsg}</p>
-                                            </div>
-                                        )
-                                        }
-
-                                        {/* <div className="review_text">
-                                            <p className="user_name mb-0">Jhon Deo</p>
-                                            <p className="user_email">jhon02@gmai.com</p>
-                                            <p className='feedback_text'>great product</p>
-                                        </div> */}
+                                        {foodReviews[0]?.review.length === 0 ?
+                                            <h5 className='my-5'>The review section is empty. Please review our product.</h5>
+                                            :
+                                            foodReviews[0]?.review?.map((item, index) =>
+                                                <div className="review_text" key={index}>
+                                                    <p className="user_name mb-0">{item?.name}</p>
+                                                    <p className="user_email mb-0">{item?.email}</p>
+                                                    <p className='feedback_text'>{item?.reviewMsg}</p>
+                                                </div>
+                                            )}
 
                                         <form className="form" onSubmit={handleReviewForm}>
                                             <div className='form_group'>
