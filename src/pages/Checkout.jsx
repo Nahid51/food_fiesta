@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import CommonSection from '../components/UI/commonSection/CommonSection';
 import Helmet from '../components/Helmet/Helmet';
 import { Container, Row, Col } from 'react-bootstrap';
 import '../styles/checkout.css';
+import { getDataForSSL } from '../store/features/paymentSlice';
 
 const Checkout = () => {
     const [enterName, setEnterName] = useState('');
@@ -12,25 +13,31 @@ const Checkout = () => {
     const [enterCountry, setEnterCountry] = useState('');
     const [enterCity, setEnterCity] = useState('');
     const [postalCode, setPostalCode] = useState('');
+    const dispatch = useDispatch();
 
-    const shippingInfo = [];
-    const cartTotalAmount = useSelector(state => state.cart.totalAmount);
-    const shippingCost = 10;
-    const totalAmount = cartTotalAmount + Number(shippingCost);
+
+    const { totalAmount, totalQuantity, cartItems } = useSelector(state => state.cart);
+    const shippingCost = 20;
+    const totalShipAmount = totalAmount + Number(shippingCost);
+
+    const foodData = cartItems.map((item) => item?.title);
+    const food = foodData.toString();
 
     const submitForm = (e) => {
         e.preventDefault();
-        const userShippingAddress = {
+        const updatedPaymentData = {
             name: enterName,
             email: enterEmail,
             phone: enterPhoneNo,
             country: enterCountry,
             city: enterCity,
-            postalCode: postalCode
+            postalCode: postalCode,
+            totalAmount: totalShipAmount,
+            totalQuantity: totalQuantity,
+            productDetails: food,
         }
-        shippingInfo.push(userShippingAddress);
-        console.log(shippingInfo);
-    }
+        dispatch(getDataForSSL({ updatedPaymentData }));
+    };
 
     return (
         <Helmet title='Checkout'>
@@ -94,10 +101,10 @@ const Checkout = () => {
 
                         <Col lg='4' md='6' className='checkout_column'>
                             <div className='checkout_bill'>
-                                <h6 className='d-flex align-items-center justify-content-between mb-3'>Subtotal: <span>${cartTotalAmount}</span></h6>
-                                <h6 className='d-flex align-items-center justify-content-between mb-3'>Shipping: <span>${shippingCost}</span></h6>
+                                <h6 className='d-flex align-items-center justify-content-between mb-3'>Subtotal: <span>৳{totalAmount}</span></h6>
+                                <h6 className='d-flex align-items-center justify-content-between mb-3'>Shipping: <span>৳{shippingCost}</span></h6>
                                 <div className='checkout_total'>
-                                    <h5 className='d-flex align-items-center justify-content-between'>Total: <span>${totalAmount}</span></h5>
+                                    <h5 className='d-flex align-items-center justify-content-between'>Total: <span>৳{totalShipAmount}</span></h5>
                                 </div>
                             </div>
                         </Col>

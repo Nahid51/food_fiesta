@@ -41,7 +41,7 @@ const Cart = () => {
                             }
 
                             <div className='mb-3'>
-                                <h6>Subtotal: $<span className='cart_subtotal'>{totalAmount}</span></h6>
+                                <h6>Subtotal: ৳<span className='cart_subtotal'>{totalAmount}</span></h6>
                                 <p>Taxes and shipping bill calculate at chekout</p>
                                 <div className='cart_page-btn'>
                                     <button className="addToCart_btn me-3">
@@ -72,7 +72,7 @@ const Tr = ({ item }) => {
                 <img src={imageFile} alt="Food_Photo" />
             </td>
             <td className='text-center'>{title}</td>
-            <td className='text-center'>${price}</td>
+            <td className='text-center'>৳{price}</td>
             <td className='text-center'>{quantity}</td>
             <td className='text-center cart_item-delete'>
                 <i className="ri-delete-bin-line" onClick={deleteItem}></i>

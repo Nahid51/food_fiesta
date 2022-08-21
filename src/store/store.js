@@ -3,6 +3,7 @@ import cartSlice from "./shopping-cart/cartSlice";
 import cartUiSlice from "./shopping-cart/cartUiSlice";
 import authSlice from "./authentication/userSlice";
 import foodSlice from "./features/foodSlice";
+import paymentSlice from "./features/paymentSlice";
 
 const store = configureStore({
     reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
         cartUi: cartUiSlice.reducer,
         auth: authSlice.reducer,
         food: foodSlice.reducer,
+        payment: paymentSlice.reducer,
     }
 })
 
