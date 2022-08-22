@@ -12,7 +12,7 @@ In the project directory, you can see:
 2. User can view all the food list, order them and review them.
 3. There have email-passwords and google login systems.
 4. Users must log in before ordering food.
-5. And can pay through SSL Commerce Payment System.
+5. And can pay through SSL Commerce Payment Gateway System.
 6. All button and link are active.
 
 7. When an admin login he can go to his admin page.
@@ -34,7 +34,7 @@ Also used lots of packeges.
 
 NodeJS + ExpressJS, where all the backend site functionality of our project is built.
 Mongoose, is usesd to store all the document of this project.
-Also used JWT and SSL Commerz packages.
+Also used JWT and SSL Commerz payment gateway.
 
 ### `Tools`
 
