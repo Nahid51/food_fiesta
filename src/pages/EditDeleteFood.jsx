@@ -17,8 +17,8 @@ const EditDeleteFood = () => {
     }, [userEmail, dispatch]);
 
     if (loading) {
-        return <div className='text-center'>
-            <Button className='text-center' variant="danger" disabled>
+        return <div className='text-center my-5'>
+            <Button variant="danger" disabled>
                 <Spinner
                     as="span"
                     animation="border"

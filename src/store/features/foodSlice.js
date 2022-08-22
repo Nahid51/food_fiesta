@@ -57,7 +57,7 @@ export const updateFood = createAsyncThunk("foods/updateFood",
         try {
             const response = await api.updateFood(updatedFoodData, id);
             toast.success("Food Updated Successfully!");
-            navigate("/foods");
+            navigate("/editDelete");
             return response.data;
         }
         catch (error) {

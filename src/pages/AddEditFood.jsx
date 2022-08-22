@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { addFood, updateFood } from '../store/features/foodSlice';
+import { Spinner } from "react-bootstrap";
 
 const initialState = {
     title: "",
@@ -14,7 +15,7 @@ const initialState = {
 
 const AddEditFood = () => {
     const [foodData, setFoodData] = useState(initialState);
-    const { error, userFoods } = useSelector((state) => ({ ...state.food }));
+    const { error, userFoods, loading } = useSelector((state) => ({ ...state.food }));
     const { user } = useSelector((state) => ({ ...state.auth }));
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -116,7 +117,7 @@ const AddEditFood = () => {
                         required
                     />
                 </div>
-                <button className="logout_btn">{id ? "Update Food" : "Add Food"}</button>
+                {loading ? <Spinner animation="border" variant="warning" /> : <button className="logout_btn">{id ? "Update Food" : "Add Food"}</button>}
             </form>
         </div>
     );
