@@ -124,10 +124,10 @@ const Login = () => {
                                     <span>Sign in with google</span>
                                 </Button>
 
-                                <Button className='d-flex align-items-center justify-content-center gap-3 mx-auto'>
+                                {/* <Button className='d-flex align-items-center justify-content-center gap-3 mx-auto'>
                                     <i className="ri-facebook-fill"></i>
                                     <span>Sign in with facebook</span>
-                                </Button>
+                                </Button> */}
                             </div>
                         </Col>
 
