@@ -24,7 +24,7 @@ In the project directory, you can see:
 
 React JS, on which the entire projects functionality and user interface is build.
 Redux-toolkit, is used to manage the state of the entire project. Verious login parts are implemented here.
-React-Bootstrap and plain css, is used for UI design purposes.
+React-Bootstrap and vanilla css, is used for UI design purposes.
 Firebase is used for Google authentication and project deployment.
 
 Also used lots of packeges.

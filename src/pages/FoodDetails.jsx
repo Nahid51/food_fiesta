@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Helmet from '../components/Helmet/Helmet';
 import CommonSection from '../components/UI/commonSection/CommonSection';
 import ProductCard from '../components/UI/product.card/ProductCard';
 import { Col, Container, Row } from 'react-bootstrap';
 import '../styles/foodDetails.css';
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { cartActions } from '../store/shopping-cart/cartSlice';
 import { getFoods, getReviewsByFood, reviewFood } from '../store/features/foodSlice';
@@ -30,9 +29,9 @@ const FoodDetails = () => {
     }, [dispatch]);
 
     const product = foods.find(pd => pd._id === id);
-    const [previewImg, setPreviewImg] = useState(product.imageFile);
-    const { title, price, category, desc, imageFile } = product;
-    const relatedProduct = foods.filter(item => category === item.category);
+    const [previewImg, setPreviewImg] = useState(product?.imageFile);
+    const { title, price, category, desc, imageFile } = product || "";
+    const relatedProduct = foods.filter(item => category === item?.category);
 
     const addItem = () => {
         dispatch(cartActions.addItem({
@@ -41,7 +40,7 @@ const FoodDetails = () => {
     }
 
     useEffect(() => {
-        setPreviewImg(product.imageFile)
+        setPreviewImg(product?.imageFile)
     }, [product]);
 
 
@@ -78,16 +77,16 @@ const FoodDetails = () => {
                     <Row>
                         <Col lg="2" md="2">
                             <div className='product_images'>
-                                <div className="img_item mb-3" onClick={() => setPreviewImg(product.imageFile)}>
-                                    <img src={product.imageFile} alt="Product_Image" className='w-50' />
+                                <div className="img_item mb-3" onClick={() => setPreviewImg(product?.imageFile)}>
+                                    <img src={product?.imageFile} alt="Product_Image" className='w-50' />
                                 </div>
 
-                                <div className="img_item mb-3" onClick={() => setPreviewImg(product.imageFile)}>
-                                    <img src={product.imageFile} alt="Product_Image" className='w-50' />
+                                <div className="img_item mb-3" onClick={() => setPreviewImg(product?.imageFile)}>
+                                    <img src={product?.imageFile} alt="Product_Image" className='w-50' />
                                 </div>
 
                                 <div className="img_item" onClick={() => setPreviewImg(product.imageFile)}>
-                                    <img src={product.imageFile} alt="Product_Image" className='w-50' />
+                                    <img src={product?.imageFile} alt="Product_Image" className='w-50' />
                                 </div>
                             </div>
                         </Col>
@@ -119,7 +118,7 @@ const FoodDetails = () => {
                                         <p>{desc}</p>
                                     </div> :
                                     <div className="tab_form mb-3">
-                                        {foodReviews[0]?.review.length === 0 ?
+                                        {foodReviews[0]?.review?.length === 0 ?
                                             <h5 className='my-5'>The review section is empty. Please review our product.</h5>
                                             :
                                             foodReviews[0]?.review?.map((item, index) =>
