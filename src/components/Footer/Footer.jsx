@@ -12,7 +12,7 @@ const Footer = () => {
     const sendEmail = (e) => {
         e.preventDefault();
 
-        emailjs.sendForm('service_1kbj7kp', 'template_alowi8m', form.current, 'bnuzjboBxr-nvfU8L')
+        emailjs.sendForm('service_d1rvb2h', 'template_8tledp9', form.current, '4j40KM-ur9hc0v20S')
             .then((result) => {
                 toast.success(`${result.text}, Message sent!`);
             }, (error) => {

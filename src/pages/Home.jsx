@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Col, Container, ListGroup, ListGroupItem, Row } from 'react-bootstrap';
+import { Col, Container, ListGroup, ListGroupItem, Row, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Helmet from '../components/Helmet/Helmet';
 import heroImg from '../assets/images/hero.png';
@@ -39,7 +39,7 @@ const featureData = [
 
 const Home = () => {
     const dispatch = useDispatch();
-    const { foods } = useSelector((state) => ({ ...state.food }));
+    const { foods, loading } = useSelector((state) => ({ ...state.food }));
     useEffect(() => {
         dispatch(getFoods());
     }, [dispatch]);
@@ -164,7 +164,9 @@ const Home = () => {
                             </div>
                         </Col>
 
-                        {
+                        {loading ?
+                            <Spinner className='mx-auto mt-5' animation="border" variant="warning" />
+                            :
                             allProducts.map(item => (
                                 <Col col="3" md="4" sm="6" xs="6" key={item._id} className="mt-5">
                                     <ProductCard item={item} />

@@ -11,7 +11,7 @@ const AddAdmin = () => {
         email: email
     }
 
-    const handleMakeAdmin = (e, key) => {
+    const handleMakeAdmin = (e) => {
         e.preventDefault();
         if (emailId) {
             dispatch(makeAdmin({ emailId, toast }));
